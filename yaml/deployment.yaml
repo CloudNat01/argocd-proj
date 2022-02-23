@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  my-web
+  labels:
+    app:  my-sts
+spec:
+  selector:
+    matchLabels:
+      app: my-sts
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app:  my-sts
+    spec:
+      containers:
+      - name:  my-web
+        image:  docker.io/cloudnat/saxo-img:latest
+        ports:
+        - containerPort:  80
